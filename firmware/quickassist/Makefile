@@ -67,7 +67,9 @@ endef
 define KernelPackage/crypto-qat-c2xxx-usdm
   SUBMENU:=Cryptographic API modules
   TITLE:=Quick Assist Pinned Memory Driver
-  DEPENDS:= @TARGET_x86_c2xxx 
+  DEPENDS:=@TARGET_x86_c2xxx 
+  KCONFIG:= CONFIG_HUGETLBFS=y \
+			CONFIG_HUGETLB_PAGE=y
   FILES:=$(PKG_BUILD_DIR)/build/usdm_drv.ko
   AUTOLOAD:=$(call AutoProbe,usdm_drv)
 endef
